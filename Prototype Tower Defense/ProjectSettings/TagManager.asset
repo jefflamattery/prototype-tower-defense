@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Observable
+  - Collider
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3222253883
+    locked: 0
+  - name: Dead
+    uniqueID: 4024684649
+    locked: 0
+  - name: Alive
+    uniqueID: 2570202585
+    locked: 0
+  - name: Foreground
+    uniqueID: 1467473635
+    locked: 0
+  - name: Worldspace UI
+    uniqueID: 1549317137
+    locked: 0
+  - name: Popup Windows
+    uniqueID: 1259406321
+    locked: 0
