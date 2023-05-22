@@ -94,6 +94,7 @@ public class MobController : MonoBehaviour
                     // the waypoint that just got dequeued was the last waypoint
                     // add the mob's gold to the player's gold
                     MapManager.Instance.PlayerBank.Deposit(mob.mobBank.WithdrawGold());
+                    MapManager.Instance.VillagersSaved++;
 
                     // remove the villager
                     mob.isAlive = false;

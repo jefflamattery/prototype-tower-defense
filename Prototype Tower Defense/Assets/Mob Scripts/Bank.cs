@@ -19,7 +19,7 @@ public class Bank : MonoBehaviour
     }
 
     public bool SpendLives(int amount){
-        if(amount >= _lives){
+        if(amount <= _lives){
             _lives -= amount;
             return true;
         } else {
@@ -67,6 +67,10 @@ public class Bank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Reset();
+    }
+
+    public void Reset(){
         _lives = initialLives;
         _gold = initialGold;
     }

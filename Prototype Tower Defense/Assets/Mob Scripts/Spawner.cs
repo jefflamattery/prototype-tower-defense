@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-
+    public bool _useGoblinBank;
     public GameObject _mobTemplate; // i.e. a villager
     public int _totalMobs;
     public int _mobsPerSpawn;
@@ -31,16 +31,28 @@ public class Spawner : MonoBehaviour
         // spawns the next mob set of mobs in the queue
         Mob m;
         Vector2 randomOffset;
+        Bank lifeSource;
+
+        // determine which bank will provide the lives that this spawner needs
+        if(_useGoblinBank){
+            lifeSource = MapManager.Instance.GoblinBank;
+        } else {
+            lifeSource = MapManager.Instance.PlayerBank;
+        }
 
         TriggerNextSpawner();
 
         for(int i = 0; i < _mobsPerSpawn; i++){
             if(_mobs.Count > 0){
-                randomOffset = _spawnRadius * Random.insideUnitCircle;
-                m = _mobs.Dequeue();
-                m.transform.position = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
-                m.CreateTask();
-
+                if(lifeSource.SpendLives(1)){
+                    randomOffset = _spawnRadius * Random.insideUnitCircle;
+                    m = _mobs.Dequeue();
+                    m.transform.position = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
+                    m.CreateTask();
+                } else {
+                    // not enough lives left to spawn
+                    _isSpawning = false;
+                }
             } else {
                 // no more mobs to spawn
                 _isSpawning = false;

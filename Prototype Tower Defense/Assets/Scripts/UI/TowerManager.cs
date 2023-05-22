@@ -17,7 +17,7 @@ public class TowerManager : MonoBehaviour, IPointerExitHandler
     }
 
     public void OnPointerExit(PointerEventData eventData){
-        gameObject.SetActive(false);
+        Close();
     }
 
     public void ClearSlot(int slotLocation){
@@ -31,6 +31,11 @@ public class TowerManager : MonoBehaviour, IPointerExitHandler
             _opener.FillSlot(slotLocation, mage);
             towerSlots[slotLocation].SetMage(mage);
         }
+    }
+
+    public void Close(){
+        MapManager.Instance.ResumeGame();
+        gameObject.SetActive(false);
     }
 
     public void Open(Tower opener, List<MageInterface> occupants){
@@ -51,6 +56,9 @@ public class TowerManager : MonoBehaviour, IPointerExitHandler
                 towerSlots[location].SetMage(null);
             }
         }
+
+        // pause the game
+        MapManager.Instance.PauseGame();
     }
 
 
